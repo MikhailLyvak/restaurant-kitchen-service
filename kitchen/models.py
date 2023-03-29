@@ -55,11 +55,11 @@ class Dish(models.Model):
     dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE)
     cooks = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
-        related_name="cooks"
+        related_name="dishs"
     )
     ingredients = models.ManyToManyField(
         Ingredient,
-        related_name="ingredients"
+        related_name="dishes"
     )
 
     class Meta:
