@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <h1>
+    {{ dish.name }}
+  </h1>
+  <ul>
+  <h1>
+    Cooks
+  </h1>
+    
+    {% for cook in dish.cooks.all %}
+      <li> {{ cook.username }} ( {{ cook.first_name }} {{ cook.last_name }} ) </li>
+    {% endfor %}
+    <h1>
+      Ingredients
+    </h1>
+    {% for ingredient in dish.ingredients.all %}
+      <li> {{ ingredient.name }} -> {{ ingredient.amount }} ({{ ingredient.unit }})</li>
+    {% endfor %}
+  </ul>    
+{% endblock content %}
+    
