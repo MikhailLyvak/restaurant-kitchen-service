@@ -27,8 +27,26 @@ class Cook(AbstractUser):
         return f"{self.username} ({self.first_name} {self.last_name})"
 
     def get_absolute_url(self):
-        return reverse("kitchen:cook-detail", kwargs={"pk": self.pk})
+        return reverse("kitchen:dish-detail", kwargs={"pk": self.pk})
 
+
+class Ingredient(models.Model):
+    name = models.CharField(max_length=255, null=False)
+    amount = models.IntegerField(null=False)
+    unit = models.CharField(max_length=255, null=False)
+    
+    class Meta:
+        ordering = ["name"]
+        constraints = [
+            UniqueConstraint(
+                fields=["name", "amount", "unit"],
+                name="uniq_name_amount_unit"
+            )
+        ]
+
+    def __str__(self):
+        return f"{self.name} -> {self.amount} ({self.unit})"
+        
 
 class Dish(models.Model):
     name = models.CharField(max_length=255)
@@ -39,9 +57,17 @@ class Dish(models.Model):
         settings.AUTH_USER_MODEL,
         related_name="cooks"
     )
+    ingredients = models.ManyToManyField(
+        Ingredient,
+        related_name="ingredients"
+    )
 
     class Meta:
         ordering = ["name"]
 
     def __str__(self):
         return self.name
+
+
+
+        

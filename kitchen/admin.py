@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import DishType, Cook, Dish
+from .models import DishType, Cook, Dish, Ingredient
 
 
 @admin.register(Cook)
-class DriverAdmin(UserAdmin):
+class CookAdmin(UserAdmin):
     list_display = UserAdmin.list_display + ("years_of_experience",)
     fieldsets = UserAdmin.fieldsets + (
         (("Additional info", {"fields": ("years_of_experience",)}),)
@@ -26,8 +26,10 @@ class DriverAdmin(UserAdmin):
 
 
 @admin.register(Dish)
-class CarAdmin(admin.ModelAdmin):
+class DishAdmin(admin.ModelAdmin):
     search_fields = ("name",)
     list_filter = ("dish_type",)
+
+admin.site.register(Ingredient)
 
 admin.site.register(DishType)
