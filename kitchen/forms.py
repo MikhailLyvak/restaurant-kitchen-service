@@ -15,7 +15,7 @@ class DishForm(forms.ModelForm):
         queryset=Ingredient.objects.all(),
         widget=forms.CheckboxSelectMultiple,
     )
-    
+
     class Meta:
         model = Dish
         fields = "__all__"
@@ -49,8 +49,8 @@ class CookExperienceUpdateForm(forms.ModelForm):
     class Meta:
         model = Cook
         fields = ["years_of_experience"]
-    
-    def clean_license_number(self): 
+
+    def clean_license_number(self):
         return validate_years_of_experience(self.cleaned_data["years_of_experience"])
 
 
@@ -59,7 +59,7 @@ def validate_years_of_experience(years_of_experience,):
         raise ValidationError("Experience years can`t be negative")
     elif not years_of_experience.is_integer():
         raise ValidationError("It should be integer value")
-    
+
     return years_of_experience
 
 
@@ -71,7 +71,17 @@ class CookUsernameSearchForm(forms.Form):
         widget=forms.TextInput(attrs={"placeholder": "Search by username..."})
     )
 
+
 class DishTypeSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by name..."})
+    )
+
+
+class IngredientSearchForm(forms.Form):
     name = forms.CharField(
         max_length=255,
         required=False,
