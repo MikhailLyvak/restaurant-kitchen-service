@@ -9033,6 +9033,17 @@ label,
   .page-header .container {
     z-index: 1; }
 
+.page-header2 {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: 50%; }
+  .page-header .container {
+    z-index: 1; }
+
 .oblique {
   transform: skewX(-10deg);
   overflow: hidden;

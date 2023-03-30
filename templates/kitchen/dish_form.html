@@ -1,12 +1,47 @@
-{% extends "base.html" %}
+{% extends "base-presentation.html" %}
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>{{ object|yesno:"Update,Create" }} dish</h1>
-  <form action="" method="post" novalidate>
-    {% csrf_token %}
-    {{ form|crispy }}
+<form action="" method="post" novalidate>
+  {% csrf_token %}
+  <div class="page-header section-height-75 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/cook_list.avif')">
+    <div class="dish_detail">
+      <div class="dish-detail-info">
+        <div class="info_header">
+          <p>{{ form.name }}</p>
+          <p>{{ form.price }}</p>
+        </div>
+        <div class="">
+          {{ form.description }}
+        </div>
+        <div class="info_header">
+          <p>{{ form.dish_type }}</p>
+        </div>
+        <div class="dish_detail">
+          <input type="submit" value="Submit" class="table_btn">
+        </div>
+      </div>
+      <div class="dish_container">
+        <div class="dish_type blur shadow-blur">
+          <div class="table_title">
+            <h4>Cooks</h4>
+          </div>
+          <div class="dish_type-data">
+            {{ form.cooks }}
+          </div>
+        </div>
+        <div class="dish_type blur shadow-blur">
+          <div class="table_title">
+            <h4>Ingredients</h4>
+          </div>
+          <div class="dish_type-data">
+            {{ form.ingredients }}
+          </div>
+        </div>
+      </div>
 
-    <input type="submit" value="Submit" class="btn btn-primary">
-  </form>
+    </div>
+  </div>
+</form>
+
 {% endblock %}

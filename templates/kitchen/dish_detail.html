@@ -1,44 +1,51 @@
-{% extends "base.html" %}
 
+{% extends "base-presentation.html" %}
 
 {% block content %}
-  <h1>
-    {{ dish.name }}
-    <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
-      Delete
-    </a>
+  <div class="page-header section-height-75 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/dish_detail.png')">
+    <div class="dish_detail">
+      <div class="dish-detail-info">
+        <div class="info_header">
+          <p class="info_header-text blur shadow-blur">{{ dish.name }}</p>
+          <p class="info_header-text blur shadow-blur">{{ dish.price }} $</p>
+        </div>
+        <div class="info_desc blur shadow-blur">
+          {{ dish.description }}
+        </div>
+        <div class="info_type blur shadow-blur">
+          {{ dish.dish_type }}
+        </div>
+        <div class="dish_btn">
+          <a href="{% url 'kitchen:dish-list' %}" class=" table_btn ">
+            Back to list
+          </a>
+        </div>
+      </div>
+      <div class="dish_container">
+        <div class="dish_type blur shadow-blur">
+          <div class="table_title">
+            <h4>Cooks</h4>
+          </div>
+          <div class="dish_type-data">
+            {% for cook in dish.cooks.all %}
+              <p>{{ cook.first_name }} {{ cook.last_name }}</p>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="dish_type blur shadow-blur">
+          <div class="table_title">
+            <h4>Ingredients</h4>
+          </div>
+          <div class="dish_type-data">
+            {% for ingredient in dish.ingredients.all %}
+              <p>{{ ingredient.name }} -> {{ ingredient.amount }} ({{ ingredient.unit }}) </p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
 
-    <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page">
-      Update
-    </a>
-  </h1>
-  <ul>
-  <h1>
-    Cooks
-    {% if dish in user.dishs.all %}
-    <a href="{% url 'kitchen:toggle-dish-assign' pk=dish.id %}" class="btn btn-danger link-to-page">
-      Delete me from this dish
-      </a>
-    {% else %}
-      <a href="{% url 'kitchen:toggle-dish-assign' pk=dish.id %}" class="btn btn-success link-to-page">
-        Assign me to this dish
-      </a>
-    {% endif %}
-  </h1>
-    
-    {% if dish.cooks.all %}
-      {% for cook in dish.cooks.all %}
-        <li> {{ cook.username }} ( {{ cook.first_name }} {{ cook.last_name }} ) </li>
-      {% endfor %}
-    {% else %}
-      <p>There are no cooks for this dish</p>
-    {% endif %}
-    <h1>
-      Ingredients
-    </h1>
-    {% for ingredient in dish.ingredients.all %}
-      <li> {{ ingredient.name }} -> {{ ingredient.amount }} ({{ ingredient.unit }})</li>
-    {% endfor %}
-  </ul>    
-{% endblock content %}
+    </div>
+  </div>
+
+{% endblock %}
     

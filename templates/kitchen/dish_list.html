@@ -1,25 +1,45 @@
-{% extends "base.html" %}
 
+{% extends "base-presentation.html" %}
 {% block content %}
-  <h1>
-    Our Dishes List
+<div class="intro" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/dish_list4.png')">
+  <div>
     {% include "includes/search_form.html" %}
-  </h1>
-  {% if dish_list %}
-    <ul>
-      {% for dish in dish_list %}
-        <li>
-          <a href="{% url 'kitchen:dish-detail' pk=dish.id %} ">{{ dish.id }}</a>
-          {{ dish.name }} ({{ dish.dish_type.name }})
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no dishes in kitchen</p>
-  {% endif %}
-{% endblock %}
+  </div>
+  <div class="table_wrapper">
+    <div class="table_container blur shadow-blur">
+      <table class="table ">
+        <tr>
+          <th class="cook_teble-head">ID</th>
+          <th class="cook_teble-head">DISH NAME</th>
+          <th class="cook_teble-head">DISH TYPE</th>
+          <th class="cook_teble-head">DELETE</th>
+          <th class="cook_teble-head">UPDATE</th>
+        </tr>
+        {% for dish in dish_list %}
+        <tr>
+          <td class="cook_teble-content">{{ dish.id }}
+          <td class="cook_teble-content"><a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}
+          <td class="cook_teble-content">{{ dish.dish_type.name }}</td>
+          <td class="cook_teble-content"><a href="{% url 'kitchen:dish-delete' pk=dish.id %}">
+            Delete
+          </a></td>
+          <td class="cook_teble-content"><a href="{% url 'kitchen:dish-update' pk=dish.id %}">
+            Update
+          </a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <div class="control">
+      <a href="{% url 'kitchen:dish-create' %}" class=" table_btn ">
+        Create
+      </a>
+      <div>
+        {% include "includes/pagination.html" %}
+      </div>
+    </div>
+  </div>
 
-{% block create %}
-<a href="{% url 'kitchen:dish-create' %}" class="btn btn-primary"> Create Dish </a>
-{% endblock create %}
-  
+
+</div>
+{% endblock content %}

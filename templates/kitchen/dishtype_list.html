@@ -1,43 +1,42 @@
-{% extends "base.html" %}
-
+{% extends "base-presentation.html" %}
 {% block content %}
-  <h1>
-    Dish Type List
+<div class="intro" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/type_list2.jpg')">
+  <div>
     {% include "includes/search_form.html" %}
-    <a href="{% url 'kitchen:dishtype-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-
-  {% if dishtype_list %}
-    <table class="table">
-      <tr>
-        <th>Name</th>
-        <th>Update</th>
-        <th>Delete</th>
-      </tr>
-
-      {% for dishtype in dishtype_list %}
+  </div>
+  <div class="table_wrapper">
+    <div class="table_container blur shadow-blur">
+      <table class="table ">
         <tr>
-          <td>
-              {{ dishtype.name }}
-          </td>
-          <td>
-              <a href="{% url 'kitchen:dishtype-update' pk=dishtype.id %}">
-                Update
-              </a>
-            </td>
-            <td>
-              <a style="color: red"
-                href="{% url 'kitchen:dishtype-delete' pk=dishtype.id %}">
-                Delete
-              </a>
-            </td>
+          <th class="cook_teble-head">ID</th>
+          <th class="cook_teble-head">TYPE NAME</th>
+          <th class="cook_teble-head">DELETE</th>
+          <th class="cook_teble-head">UPDATE</th>
         </tr>
-      {% endfor %}
-    </table>
+        {% for dish_type in dishtype_list %}
+        <tr>
+          <td class="cook_teble-content">{{ dish_type.id }}
+          <td class="cook_teble-content">{{ dish_type.name }}
+          <td class="cook_teble-content"><a href="{% url 'kitchen:dishtype-delete' pk=dish_type.id %}">
+            Delete
+          </a></td>
+          <td class="cook_teble-content"><a href="{% url 'kitchen:dishtype-update' pk=dish_type.id %}">
+            Update
+          </a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <div class="control">
+      <a href="{% url 'kitchen:dishtype-create' %}" class=" table_btn ">
+        Create
+      </a>
+      <div>
+        {% include "includes/pagination.html" %}
+      </div>
+    </div>
+  </div>
 
-  {% else %}
-      <p>There are no dishtype in the kitchen.</p>
-  {% endif %}
-{% endblock %}
+
+</div>
+{% endblock content %}

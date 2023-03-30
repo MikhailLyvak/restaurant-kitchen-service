@@ -1,8 +1,14 @@
 {% load crispy_forms_filters %}
 
-
-  <form action="" method="get" class="misha">
-    <div class="misha">{{ search_form|crispy }}  
-      <input class="btn btn-secondary" type="submit" value="💡">
-    </div>   
+  <form action="" method="get">
+    {% csrf_token %}
+    <section class="py-7">
+      <div class="container">
+        <div class="row justify-space-between py-2">
+          <div class="col-lg-4 mx-auto">{{ search_form|crispy }} 
+          </div>
+        </div>
+      </div>
+    </section>
   </form>
+  

@@ -32,7 +32,12 @@
                 <form method="post" action="" role="form">
 
                   {% csrf_token %}
-
+                  {% if form.errors %}
+                    <div class="alert-danger">
+                      <p> Check </p>
+                    </div>
+                  {% endif %}
+                  
                   <div class="mb-3">
                     {{ form.username }}
                   </div>
@@ -50,25 +55,21 @@
                 </form>
               </div>
               <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                <p class="mb-4 text-sm mx-auto">
-                  Don't have an account?
-                  <a href="{% url 'login' %}" class="text-primary text-gradient font-weight-bold">Sign UP</a>
-                </p>
               </div>
             </div>
           </div>
           <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
-            <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center">
+            <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/fon2.jpg')">
               <img src="{{ ASSETS_ROOT }}/img/shapes/pattern-lines.svg" alt="pattern-lines" class="position-absolute opacity-4 start-0">
               <div class="position-relative">
-                <img class="max-width-500 w-100 position-relative z-index-2" src="{{ ASSETS_ROOT }}/img/illustrations/chat.png">
+                <img class="max-width-500 w-100 position-relative z-index-2" src="{{ ASSETS_ROOT }}/img/illustrations/chef.png">
               </div>
               <h4 class="mt-5 text-white font-weight-bolder">
-                Soft UI Design System
+                Restaurant Kitchen Service
               </h4>
               <p class="text-white">
-                &copy; <a target="_blank" class="text-white" href="https://bit.ly/3fKQZaL" target="_blank">Creative Tim</a> 
-                - Coded by <a class="text-white" target="_blank" href="https://appseed.us" target="_blank">AppSeed</a>.
+                &copy; <a target="_blank" class="text-white" href="https://bit.ly/3fKQZaL" target="_blank">MateAcademy Stydent</a> 
+                - Coded by <a class="text-white" target="_blank" href="https://appseed.us" target="_blank">Mykhail Lyvak</a>.
               </p>
             </div>
           </div>

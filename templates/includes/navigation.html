@@ -25,14 +25,14 @@
               </li>
 
               <li class="nav-link">
-                <a href="#">All dishes</a>
+                <a href="{% url 'kitchen:dish-list' %}">All dishes</a>
               </li>
 
               <li class="nav-link">
-                <a href="#">All dish types</a>
+                <a href="{% url 'kitchen:dishtype-list' %}">All dish types</a>
               </li>
               <li class="nav-link">
-                <a href="#">All ingredients</a>
+                <a href="{% url 'kitchen:ingredient-list' %}">All ingredients</a>
               </li>
 
               <li class="nav-item ms-lg-auto">
@@ -45,7 +45,6 @@
           </div>
         </div>
       </nav>
-      <!-- End Navbar -->
     </div>
   </div>
 </div>
