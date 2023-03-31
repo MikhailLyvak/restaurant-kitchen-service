@@ -4,7 +4,7 @@ Django Project for managing dishes, cooks in Kitchen
 
 ## Check in out
 
-   -> Here should be link <-
+   [ Restaurant Kitchen Service to Render ] (https://kitchen-1f2x.onrender.com/)
 
 ## Installation
 
