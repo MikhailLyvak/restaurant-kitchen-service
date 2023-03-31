@@ -6,6 +6,12 @@ Django Project for managing dishes, cooks in Kitchen
 
    [Restaurant Kitchen Service to Render](https://kitchen-1f2x.onrender.com/)
 
+```shell
+Your Login: Inspector
+Your Pass:  HomePass123
+```
+
+
 ## Installation
 
 Python3 must be already installed
