@@ -15,11 +15,16 @@
         <div class="info_type blur shadow-blur">
           {{ dish.dish_type }}
         </div>
-        <div class="dish_btn">
-          <a href="{% url 'kitchen:dish-list' %}" class=" table_btn ">
-            Back to list
-          </a>
-        </div>
+          <div class="dish_btn">
+            <a href="{% url 'kitchen:dish-list' %}" class=" table_btn ">
+              Back to list
+            </a>
+            {% if user in dish.cooks.all %}
+              <a href="{% url 'kitchen:remove-add-cook-to-dish' pk=dish.id %}" class="table_btn_del">Delete me from this dish</a>
+            {% else %}
+              <a href="{% url 'kitchen:remove-add-cook-to-dish' pk=dish.id %}" class="table_btn_up">Assign me to this dish</a> 
+            {% endif %}
+          </div>
       </div>
       <div class="dish_container">
         <div class="dish_type blur shadow-blur">
@@ -28,7 +33,7 @@
           </div>
           <div class="dish_type-data">
             {% for cook in dish.cooks.all %}
-              <p>{{ cook.first_name }} {{ cook.last_name }}</p>
+              <p>{{ cook.first_name }} {{ cook.last_name }} {% if user == cook %} -> (Me){% endif %}</p>
             {% endfor %}
           </div>
         </div>
@@ -42,10 +47,10 @@
             {% endfor %}
           </div>
         </div>
-      </div>
-
-    </div>
+      </div> 
+    </div>  
   </div>
+  
 
 {% endblock %}
     
