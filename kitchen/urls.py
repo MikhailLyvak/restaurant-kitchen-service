@@ -21,6 +21,7 @@ from .views import (
     IngredientCreateView,
     IngredientUpdateView,
     IngredientDeleteView,
+    remove_add_cook_to_dish
 )
 
 
@@ -81,6 +82,9 @@ urlpatterns = [
         "ingredients/<int:pk>/delete/",
         IngredientDeleteView.as_view(),
         name="ingredient-delete",
+    ),
+    path("dishs/<int:pk>/remove_add_cook_to_dish/",
+        remove_add_cook_to_dish, name="remove-add-cook-to-dish"
     ),
 ]
 

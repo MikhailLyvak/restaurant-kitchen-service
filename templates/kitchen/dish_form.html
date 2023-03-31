@@ -39,9 +39,15 @@
           </div>
         </div>
       </div>
+      
 
     </div>
   </div>
 </form>
+{% if form.errors %}
+        <div class="alert-danger">
+          <p> Fields -> name, price, dish-type, cooks and ingredients cannot be empty </p>
+        </div>
+      {% endif %}
 
 {% endblock %}
