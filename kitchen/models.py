@@ -34,7 +34,7 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=255, null=False)
     amount = models.IntegerField(null=False)
     unit = models.CharField(max_length=255, null=False)
-    
+
     class Meta:
         ordering = ["name"]
         constraints = [
@@ -46,7 +46,7 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return f"{self.name} -> {self.amount} ({self.unit})"
-        
+
 
 class Dish(models.Model):
     name = models.CharField(max_length=255)
@@ -64,11 +64,6 @@ class Dish(models.Model):
 
     class Meta:
         ordering = ["id"]
-        
 
     def __str__(self):
         return self.name
-
-
-
-        
