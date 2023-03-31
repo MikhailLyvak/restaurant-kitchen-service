@@ -17,7 +17,7 @@ from .forms import (
 )
 
 
-
+@login_required
 def index(request):
     """View function for the home page of the site."""
     num_cooks = Cook.objects.count()
@@ -85,7 +85,7 @@ class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("kitchen:dish-list")
 
 
-class CookListView(generic.ListView):
+class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
     paginate_by = 5
 
@@ -110,7 +110,7 @@ class CookListView(generic.ListView):
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
     model = Cook
-    queryset = Cook.objects.all().prefetch_related("dishs__dish_type")
+    queryset = Cook.objects.prefetch_related("dishs__dish_type")
 
 
 class CookCreateView(LoginRequiredMixin, generic.CreateView):

@@ -1,33 +1,73 @@
-{% extends "base.html" %}
+{% extends "base-presentation.html" %}
 
 {% block content %}
-  <h1>
-    Username: {{ cook.username }}
-    <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="btn btn-danger link-to-page">
-      Delete
-    </a>
 
-    <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn btn-secondary link-to-page">
-      Update years of experience
-    </a>
-  </h1>
+  <div class="page-header section-height-75 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/cook_detail.jpg')">
+    <div class="cook_detail">
+      <div class="cook-detail-info">
+        <div class="blur cook_username shadow-blur">
+          <h3 class="">
+            Cook name: {{ cook.username }}
+          </h3>
+        </div>
+        <div class="cook_control">
+          <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="table_btn_up">
+            Update years of experience
+          </a>
+          <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="table_btn_del">
+            Delete
+          </a>
+        </div>
+        <div class="info blur shadow-blur">
+            <div class="table_title">
+              Short Info
+            </div>
+            <div class="info-container">
+              <div class="info-firstName">
+                <p>First Name</p>
+              </div>
+              <div class="info-value">
+                <p>{{ cook.first_name }}</p>
+              </div>
+            </div>
+            <div class="info-container">
+              <div class="info-firstName">
+                <p>Last Name</p>
+              </div>
+              <div class="info-value">
+                <p>{{ cook.last_name }}</p>
+              </div>
+            </div>
+            <div class="info-container">
+              <div class="info-firstName">
+                <p>Years of Experience</p>
+              </div>
+              <div class="info-value">
+                <p>{{ cook.years_of_experience }}</p>
+              </div>
+            </div>
+        </div>
 
-  <p><strong>First name:</strong> {{ cook.first_name }}</p>
-  <p><strong>Last name:</strong> {{ cook.last_name }}</p>
-  <p><strong>Years of experience:</strong> {{ cook.years_of_experience }}</p>
-  <p><strong>Is staff:</strong> {{ cook.is_staff }}</p>
-
-  <div class="ml-3">
-    <h4>Dishes</h4>
-
-    {% for dish in cook.dishs.all %}
-        <hr>
-        <p><strong>Name:</strong> {{ dish.name }}</p>
-        <p><strong>Dish type:</strong> {{ dish.dish_type.name }}</p>
-        <p class="text-muted"><strong>Id:</strong> {{dish.id}}</p>
-
-    {% empty %}
-      <p>No dishes!</p>
-    {% endfor %}
+      </div>
+      <div class="dishes blur shadow-blur">
+        <div class="table_title">
+          Dishes
+        </div>
+            <table class="table ">
+              <tr>
+                <th class="cook_teble-head">Dish Name</th>
+                <th class="cook_teble-head">Dish Type</th>
+              </tr>
+              {% for dish in cook.dishs.all %}
+              <tr>
+                <td class="cook_teble-content">{{ dish.name }}</a></td>
+                <td class="cook_teble-content">{{ dish.dish_type.name }}</td>
+              </tr>
+              {% endfor %}
+            </table>
+    </div>
+    </div>
   </div>
+
+
 {% endblock %}

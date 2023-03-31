@@ -1,0 +1,302 @@
+.intro {
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.table_container  {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  border-radius: 12px;
+  padding: 5px 8px;
+}
+
+.table_wrapper {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.table_btn {
+
+  background: #FFFFFFCC;
+  opacity: 1;
+  border-radius: 6px;
+  padding: 0;
+  width: 200px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table_btn_up {
+  background: #FFFFFFCC;
+  opacity: 1;
+  border-radius: 6px;
+  padding: 0;
+  width: 200px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table_btn_up:hover {
+  transform: scale(1.1);
+  background: #33FF99;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  color: black
+}
+
+.table_btn_del {
+  background: #FFFFFFCC;
+  opacity: 1;
+  border-radius: 6px;
+  padding: 0;
+  width: 200px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table_btn_del:hover {
+  transform: scale(1.1);
+  background: #FF6666;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  color: black
+}
+
+.table_btn:hover {
+  transform: scale(1.1);
+  background: #33FFFF;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  color: black
+}
+
+.control {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom_pagination {
+  display: flex;
+  gap: 8px;
+}
+
+.custom_page-item {
+
+}
+
+.next-btn {
+  background: #FFFFFFCC;
+  opacity: 1;
+  width: 80px;
+  padding: 0;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.next-btn:hover {
+  transform: scale(1.1);
+  background: #33FFFF;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  color: black
+}
+
+.prev-btn {
+  background: #FFFFFFCC;
+  opacity: 1;
+  width: 80px;
+  padding: 0;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.prev-btn:hover {
+  transform: scale(1.1);
+  background: #33FFFF;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  color: black
+}
+
+.custom_page-link {
+  background: #FFFFFFCC;
+  opacity: 1;
+  width: 80px;
+  padding: 0;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.cook_teble-head {
+  text-align: center;
+}
+
+.cook_teble-content {
+  text-align: center;
+}
+
+.text_c_style {
+  color: white;
+}
+
+.cook_detail {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cook-detail-info {
+  width: 100%;
+  max-width: 500px;
+  margin-left: 123px;
+}
+
+.info {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 40px;
+  border-radius: 12px;
+}
+
+.table_title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 4px;
+  border-bottom: 1px solid gray;
+}
+
+.cook_username {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 4px;
+  border-radius: 12px;
+}
+
+.info-container {
+  width: 100%;
+  display: flex;
+
+}
+
+.info-firstName {
+  padding-top: 10px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  border-right: solid 1px gray;
+}
+
+.info-value {
+  padding-top: 10px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.cook_control {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dishes {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  margin-right: 123px;
+}
+
+.dish_detail {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dish-detail-info {
+  width: 100%;
+  max-width: 500px;
+  margin-left: 123px;
+}
+
+.info_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info_header-text {
+  width: 240px;
+  padding: 10px 0;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.info_desc {
+  width: 100%;
+  height: 220px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.info_type {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.dish_type {
+ width: 300px;
+ border-radius: 12px;
+}
+
+.dish_type-data {
+  padding-left: 20px;
+  text-align: left;
+  height: 300px;
+  overflow-y: auto;
+}
+
+.dish_container {
+  display: flex;
+  margin-right: 123px;
+  gap:80px
+}
+
+.dish_btn {
+  padding-top: 20px;
+}

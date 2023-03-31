@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from kitchen.models import Dish, Cook, Ingredient
+from kitchen.models import Dish, Cook, Ingredient, DishType
 
 
 class DishForm(forms.ModelForm):
@@ -15,10 +15,28 @@ class DishForm(forms.ModelForm):
         queryset=Ingredient.objects.all(),
         widget=forms.CheckboxSelectMultiple,
     )
+    dish_type = forms.ModelChoiceField(queryset=DishType.objects.all(
+    ), widget=forms.Select(attrs={'class': "info_header-text blur shadow-blur"}))
 
     class Meta:
         model = Dish
-        fields = "__all__"
+        fields = ["name", "price", "description",
+                  "dish_type", "cooks", "ingredients"]
+        widgets = {
+            "name": forms.TextInput(attrs={
+                "class": "info_header-text blur shadow-blur",
+                "placeholder": "name",
+                "required": True
+            }),
+            "price": forms.TextInput(attrs={
+                "class": "info_header-text blur shadow-blur",
+                "placeholder": "price $"
+            }),
+            "description": forms.Textarea(attrs={
+                "class": "info_desc blur shadow-blur",
+                "placeholder": "Enter description here..."
+            }),
+        }
 
 
 class DishSearchForm(forms.Form):

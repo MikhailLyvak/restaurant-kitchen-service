@@ -17,7 +17,7 @@ class CookAdmin(UserAdmin):
                     "fields": (
                         "first_name",
                         "last_name",
-                        "license_number",
+                        "years_of_experience",
                     )
                 },
             ),

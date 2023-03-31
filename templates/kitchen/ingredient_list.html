@@ -1,51 +1,44 @@
-{% extends "base.html" %}
-
+{% extends "base-presentation.html" %}
 {% block content %}
-  <h1>
-    Ingredient List
+<div class="intro" style="background-image: url('{{ ASSETS_ROOT }}/img/curved-images/ingred.jpg')">
+  <div>
     {% include "includes/search_form.html" %}
-    <a href="{% url 'kitchen:ingredient-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-
-  {% if ingredient_list %}
-    <table class="table">
-      <tr>
-        <th>Name</th>
-        <th>Amount</th>
-        <th>Unit</th>
-        <th>Update</th>
-        <th>Delete</th>
-      </tr>
-
-      {% for ingredient in ingredient_list %}
+  </div>
+  <div class="table_wrapper">
+    <div class="table_container blur shadow-blur">
+      <table class="table ">
         <tr>
-          <td>
-              {{ ingredient.name }}
-          </td>
-          <td>
-            {{ ingredient.amount }}
-          </td>
-          <td>
-            {{ ingredient.unit }}
-          </td>
-          <td>
-              <a href="{% url 'kitchen:ingredient-update' pk=ingredient.id %}">
-                Update
-              </a>
-            </td>
-            <td>
-              <a style="color: red"
-                href="{% url 'kitchen:ingredient-delete' pk=ingredient.id %}">
-                Delete
-              </a>
-            </td>
+          <th class="cook_teble-head">NAME</th>
+          <th class="cook_teble-head">ANOUNT</th>
+          <th class="cook_teble-head">UNIT</th>
+          <th class="cook_teble-head">DELETE</th>
+          <th class="cook_teble-head">UPDATE</th>
         </tr>
-      {% endfor %}
-    </table>
+        {% for ingredient in ingredient_list %}
+        <tr>
+          <td class="cook_teble-content">{{ ingredient.name }}
+          <td class="cook_teble-content">{{ ingredient.amount }}
+            <td class="cook_teble-content">{{ ingredient.unit }}
+          <td class="cook_teble-content"><a href="{% url 'kitchen:ingredient-delete' pk=ingredient.id %}">
+            Delete
+          </a></td>
+          <td class="cook_teble-content"><a href="{% url 'kitchen:ingredient-update' pk=ingredient.id %}">
+            Update
+          </a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <div class="control">
+      <a href="{% url 'kitchen:ingredient-create' %}" class=" table_btn ">
+        Create
+      </a>
+      <div>
+        {% include "includes/pagination.html" %}
+      </div>
+    </div>
+  </div>
 
-  {% else %}
-      <p>There are no indredients in the kitchen.</p>
-  {% endif %}
-{% endblock %}
+
+</div>
+{% endblock content %}
