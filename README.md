@@ -22,8 +22,7 @@ python3 -m venv venv
 venv\Scripts\activate (on Windows)
 source venv/bin/activate (on macOS)
 pip install -r requirements.txt
-python manage.py makemigrations
-python manage.py migrate
+python manage.py migrate    <- migrations are already created for you.
 python manage.py runserver
 ```
 
