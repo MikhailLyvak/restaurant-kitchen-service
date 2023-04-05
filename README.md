@@ -4,7 +4,7 @@ Django Project for managing dishes, cooks in Kitchen
 
 ## Check in out
 
-   [Restaurant Kitchen Service to Render](https://kitchen-1f2x.onrender.com/)
+My web-site LINK ->   [Click me!](https://kitchen-1f2x.onrender.com/)
 
 ```shell
 Your Login: Inspector
