@@ -37,6 +37,11 @@ def index(request):
     return render(request, "kitchen/index.html", context=context)
 
 
+@login_required
+def no_page(request):
+    return render(request, "kitchen/no_page.html")
+
+
 class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
     paginate_by = 5
@@ -110,7 +115,7 @@ class CookListView(LoginRequiredMixin, generic.ListView):
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
     model = Cook
-    queryset = Cook.objects.prefetch_related("dishs__dish_type")
+    queryset = Cook.objects.prefetch_related("dishes__dish_type")
 
 
 class CookCreateView(LoginRequiredMixin, generic.CreateView):
@@ -134,11 +139,11 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
 def toggle_assign_to_dish(request, pk):
     cook = Cook.objects.get(id=request.user.id)
     if (
-        Dish.objects.get(id=pk) in cook.dishs.all()
+        Dish.objects.get(id=pk) in cook.dishes.all()
     ):  # probably could check if car exists
-        cook.dishs.remove(pk)
+        cook.dishes.remove(pk)
     else:
-        cook.dishs.add(pk)
+        cook.dishes.add(pk)
     return HttpResponseRedirect(reverse_lazy("kitchen:dish-detail", args=[pk]))
 
 
@@ -226,8 +231,8 @@ def remove_add_cook_to_dish(request, pk):
     dish = Dish.objects.get(id=pk)
     cook = Cook.objects.get(id=request.user.id)
     if cook in dish.cooks.all():
-        cook.dishs.remove(pk)
+        cook.dishes.remove(pk)
     else:
-        cook.dishs.add(pk)
+        cook.dishes.add(pk)
 
     return HttpResponseRedirect(reverse_lazy("kitchen:dish-detail", args=[pk]))

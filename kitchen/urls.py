@@ -21,7 +21,8 @@ from .views import (
     IngredientCreateView,
     IngredientUpdateView,
     IngredientDeleteView,
-    remove_add_cook_to_dish
+    remove_add_cook_to_dish,
+    no_page
 )
 
 
@@ -35,8 +36,8 @@ urlpatterns = [
         toggle_assign_to_dish,
         name="toggle-dish-assign"
     ),
-    path("dishs/<int:pk>/update/", DishUpdateView.as_view(), name="dish-update"),
-    path("dishs/<int:pk>/delete/", DishDeleteView.as_view(), name="dish-delete"),
+    path("dishes/<int:pk>/update/", DishUpdateView.as_view(), name="dish-update"),
+    path("dishes/<int:pk>/delete/", DishDeleteView.as_view(), name="dish-delete"),
     path("cooks/", CookListView.as_view(), name="cook-list"),
     path("cooks/<int:pk>/", CookDetailView.as_view(), name="cook-detail"),
     path("cooks/<int:pk>/update/",
@@ -83,9 +84,10 @@ urlpatterns = [
         IngredientDeleteView.as_view(),
         name="ingredient-delete",
     ),
-    path("dishs/<int:pk>/remove_add_cook_to_dish/",
+    path("dishes/<int:pk>/remove_add_cook_to_dish/",
         remove_add_cook_to_dish, name="remove-add-cook-to-dish"
     ),
+    path("404/", no_page, name="no-page")
 ]
 
 

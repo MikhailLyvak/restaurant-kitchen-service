@@ -11,7 +11,7 @@ class DishType(models.Model):
     class Meta:
         ordering = ["id"]
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
@@ -23,7 +23,7 @@ class Cook(AbstractUser):
         verbose_name_plural = "cooks"
         ordering = ["-years_of_experience"]
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.username} ({self.first_name} {self.last_name})"
 
     def get_absolute_url(self):
@@ -44,7 +44,7 @@ class Ingredient(models.Model):
             )
         ]
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.name} -> {self.amount} ({self.unit})"
 
 
@@ -55,7 +55,7 @@ class Dish(models.Model):
     dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE)
     cooks = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
-        related_name="dishs"
+        related_name="dishes"
     )
     ingredients = models.ManyToManyField(
         Ingredient,
@@ -65,5 +65,5 @@ class Dish(models.Model):
     class Meta:
         ordering = ["id"]
 
-    def __str__(self):
-        return self.name
+    def __str__(self) -> str:
+        return f"{self.name} price: {self.price}"
