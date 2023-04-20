@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             model_name="dish",
             name="cooks",
             field=models.ManyToManyField(
-                related_name="dishs", to=settings.AUTH_USER_MODEL
+                related_name="dishes", to=settings.AUTH_USER_MODEL
             ),
         ),
         migrations.AlterField(
